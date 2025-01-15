@@ -1,3 +1,3 @@
 # AgenceImmobilier
 Laravel project
-Mise en pratique de la formation grafikart 
+Mise en pratique de la formation de Grafikart
