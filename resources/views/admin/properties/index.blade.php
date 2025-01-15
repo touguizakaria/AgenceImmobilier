@@ -6,7 +6,7 @@
 
     <div class="d-flex justify-content-between align-items-center">
         <h1>@yield('title')</h1>
-        <a href="{{ route('admin.property.create') }}" class="btn btn-primary">Ajouter un bien</a>
+        <a href="{{ route('admin.property.create') }}" class="btn btn-primary">Ajouter un nouveau bien</a>
     </div>
 
     <table class="table table-striped">
