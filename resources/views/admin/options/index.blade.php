@@ -1,36 +1,30 @@
 @extends('admin.adminBase')
 
-@section('title', 'Tous les biens')
+@section('title', 'Tous les options')
 
 @section('content')
 
     <div class="d-flex justify-content-between align-items-center">
         <h1>@yield('title')</h1>
-        <a href="{{ route('admin.property.create') }}" class="btn btn-primary">Ajouter un bien</a>
+        <a href="{{ route('admin.option.create') }}" class="btn btn-primary">Ajouter une option</a>
     </div>
 
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Titre</th>
-            <th>Surface</th>
-            <th>Prix</th>
-            <th>Ville</th>
+            <th>Nom</th>
             <th class="text-end">Actions</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($properties as $property)
+        @foreach($options as $option)
             <tr>
-                <td>{{$property->title}}</td>
-                <td>{{$property->surface}} M²</td>
-                <td>{{number_format($property->price, thousands_separator: ' ')}} €</td>
-                <td>{{$property->city}}</td>
+                <td>{{$option->name}}</td>
                 <td class="text-end">
                     <div class="d-flex gap-2 w-100 justify-content-end">
-                        <a href="{{ route('admin.property.edit', $property) }}" class="btn btn-primary">Modifier</a>
+                        <a href="{{ route('admin.option.edit', $option) }}" class="btn btn-primary">Modifier</a>
 
-                        <form action="{{ route('admin.property.destroy', $property) }}" method="post">
+                        <form action="{{ route('admin.option.destroy', $option) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">Supprimer</button>
@@ -42,5 +36,5 @@
         </tbody>
     </table>
 
-    {{ $properties->links() }}
+    {{ $options->links() }}
 @endsection
