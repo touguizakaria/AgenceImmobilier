@@ -27,6 +27,9 @@ Route::get('/biens/{slug}-{property}', [PropertyController::class, 'show'])->nam
     'slug' => $slugRegex,
     'property' => $idRegex
 ]);
+Route::post('/biens/{property}/contact', [PropertyController::class, 'contact'])->name('property.contact')->where([
+    'property' => $idRegex
+]);
 
 
 
