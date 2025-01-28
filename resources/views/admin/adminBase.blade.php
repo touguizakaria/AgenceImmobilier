@@ -29,6 +29,20 @@ $routeName = request()->route()->getName();
                     <a @class(['nav-link', 'active' => str_contains($routeName, 'option.')]) href="{{ route('admin.option.index') }}">Gérer les options</a>
                 </li>
             </ul>
+
+            <div class="ms-auto">
+                @auth()
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="nav-link">Se déconnecter</button>
+                            </form>
+                        </li>
+                    </ul>
+                @endauth
+            </div>
         </div>
     </div>
 </nav>
