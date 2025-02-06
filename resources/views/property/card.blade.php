@@ -28,6 +28,11 @@
     }
 </style>
 <div class="card">
+    @if($property->getPicture())
+        <img src="{{ $property->getPicture()->getImageUrl() }}" alt="" class="w-100">
+    @else
+        <img src="https://placehold.co/600x400" alt="" class="w-100">
+    @endif
     <div class="card-body">
         @if($property->sold)
         <div class="shape">
