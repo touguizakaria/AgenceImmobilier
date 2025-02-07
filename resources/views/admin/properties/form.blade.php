@@ -41,9 +41,20 @@
                 </div>
             </div>
 
-            <div class="col" style="flex: 25">
+            <div class="col vstack gap-3" style="flex: 25">
                 @foreach($property->pictures as $picture)
-                    <img src="{{ $picture->getImageUrl() }}" alt="" class="w-100 d-block">
+                    <div id="picture-{{ $picture->id }}" class="position-relative">
+                        <img src="{{ $picture->getImageUrl() }}" alt="" class="w-100 d-block">
+                        <button type="button"
+                                class="btn btn-danger w-100 position-absolute bottom-0 start-0"
+                                hx-delete="{{ route('admin.picture.destroy', $picture) }}"
+                                hx-target="#picture-{{ $picture->id }}"
+                                hx-confirm="Êtes-vous sûr de vouloir supprimer cet élément ?"
+                                hx-swap="delete">
+                            <span class="htmx-indicator spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Supprimer
+                        </button>
+                    </div>
                 @endforeach
 
                 @include('shared.upload', ['label' => 'Images', 'name' => 'pictures', 'multiple' => true])
